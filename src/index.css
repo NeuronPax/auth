@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-[url('wave.svg')] bg-no-repeat bg-bottom bg-gray-200 text-gray-700 min-h-screen;
+    @apply bg-[url('./assets/wave.svg')] bg-no-repeat bg-bottom bg-gray-200 text-gray-700 min-h-screen;
   }
 }
 
@@ -15,8 +15,7 @@
   input {
     @apply border border-gray-300 rounded-md bg-gray-100 focus:bg-white text-sm focus:outline-none focus:ring-4 ring-blue-300 py-2 px-3 transition;
   }
-}
-
-.input_error {
+  .input_error {
   @apply border-red-300 ring-red-300 text-red-700 placeholder-red-300 pr-10;
+}
 }

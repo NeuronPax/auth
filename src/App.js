@@ -1,6 +1,6 @@
-import Header from './Header'
-import Content from './Content'
-import Login from './Login'
+import Header from './components/Header'
+import Content from './components/Content'
+import Login from './pages/Login'
 
 const App =() => {
   return (
