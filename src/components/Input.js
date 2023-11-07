@@ -1,6 +1,7 @@
 import {useIcons} from '../assets/Icons'
+import {forwardRef} from 'react'
 
-const Input = ({label, icon, error, ...props}) => {
+const Input = forwardRef(({label, icon, error, ...props}, ref) => {
 	const icons = useIcons()
 	return (
 		<div>
@@ -11,6 +12,7 @@ const Input = ({label, icon, error, ...props}) => {
 				{icon(`absolute ${!error ? 'text-gray-400' : 'text-red-400'} h-5 pl-3`)}
 				<input
 					{...props}
+          ref={ref}
 					id={props.type}
 					className={`${error && 'input_error'} w-full pl-10`}
 				/>
@@ -19,6 +21,6 @@ const Input = ({label, icon, error, ...props}) => {
 			<span className='block text-sm text-red-600 mt-1'>{error}</span>
 		</div>
 	)
-}
+})
 
 export default Input
