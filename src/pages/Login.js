@@ -1,31 +1,27 @@
-import * as yup from 'yup'
 import {useForm} from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
-import {useIcons} from '../assets/Icons'
+import {Schema} from '../validation/Schema'
+import {useIcons} from '../hooks/Icons'
 import Input from '../components/Input'
-
-const Schema = yup.object().shape({
-	userEmail: yup
-		.string()
-		.email('Email should have correct format')
-		.required('Email is a required field'),
-	userPassword: yup.string().min(6, 'Minimum password length 8 characters')
-})
+import {data} from '../data/data'
+import {useAuth} from '../hooks/Auth'
 
 const Login = () => {
 	const {
     register,
 		handleSubmit,
-		formState: {errors},
-		reset
+		formState: {errors}
 	} = useForm({
 		mode: 'onBlur',
 		resolver: yupResolver(Schema)
 	})
 	const icons = useIcons()
+  const {setUser} = useAuth()
 	const onFormSubmit = ({userEmail, userPassword}) => {
-		alert(`Login: ${userEmail} Password: ${userPassword}`)
-		reset()
+    (userEmail === data.email) && (userPassword === data.password) ?
+      setUser(userEmail)
+    :
+      alert('Login or password is incorrect')
 	}
 	return (
 		<div className='flex flex-col items-center'>
@@ -44,7 +40,7 @@ const Login = () => {
           <Input
             {...register('userPassword')}
             type='password'
-            placeholder='Minimum 8 characters'
+            placeholder='Minimum 6 characters'
             error={errors.userPassword?.message}
             label='Password'
             icon={icons.password}

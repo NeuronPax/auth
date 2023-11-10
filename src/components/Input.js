@@ -1,4 +1,4 @@
-import {useIcons} from '../assets/Icons'
+import {useIcons} from '../hooks/Icons'
 import {forwardRef} from 'react'
 
 const Input = forwardRef(({label, icon, error, ...props}, ref) => {
